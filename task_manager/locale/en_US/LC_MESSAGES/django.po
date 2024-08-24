@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-24 11:55+0500\n"
+"POT-Creation-Date: 2024-08-24 14:08+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Hexlet Task manager"
 msgid "Менеджер задач"
 msgstr "Task manager"
 
-#: task_manager/templates/layout.html:20
+#: task_manager/templates/layout.html:20 task_manager/templates/users.html:4
 msgid "Пользователи"
 msgstr "Users"
 
@@ -48,3 +48,27 @@ msgstr "Login"
 #: task_manager/templates/layout.html:30
 msgid "Регистрация"
 msgstr "Register"
+
+#: task_manager/templates/users.html:8
+msgid "ID"
+msgstr "ID"
+
+#: task_manager/templates/users.html:9
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: task_manager/templates/users.html:10
+msgid "Полное имя"
+msgstr "Full name"
+
+#: task_manager/templates/users.html:11
+msgid "Дата создания"
+msgstr "Created"
+
+#: task_manager/templates/users.html:23
+msgid "Изменить"
+msgstr "Edit"
+
+#: task_manager/templates/users.html:25
+msgid "Удалить"
+msgstr "Delete"

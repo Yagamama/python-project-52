@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+<h1>{% translate "Пользователи" %}</h1>
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">{% translate "ID" %}</th>
+          <th scope="col">{% translate "Имя пользователя" %}</th>
+          <th scope="col">{% translate "Полное имя" %}</th>
+          <th scope="col">{% translate "Дата создания" %}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>1</td>
+            <td>ivanovvvv</td>
+            <td>Иван Ивановввв</td>
+            <td>09.08.2024 11:31</td>
+            <td>
+              <a href="/users/1/update/">{% translate "Изменить" %}</a>
+              <br>
+              <a href="/users/1/delete/">{% translate "Удалить" %}</a>
+            </td>
+          </tr>
+        
+</table>
+{% endblock %}
