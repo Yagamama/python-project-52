@@ -15,10 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from task_manager import views
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('', views.index),
+    # path('', views.index),
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
+
+urlpatterns += i18n_patterns(
+    path('', views.index),
+    # Needed for translations in Javascript
+    # path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+)
