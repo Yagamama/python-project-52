@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 12:47+0500\n"
+"POT-Creation-Date: 2024-08-26 13:24+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,13 +50,47 @@ msgid "Регистрация"
 msgstr "Register"
 
 #: task_manager/templates/login.html:7 task_manager/templates/login.html:9
-#: task_manager/templates/users.html:9
+#: task_manager/templates/u_create.html:19
+#: task_manager/templates/u_create.html:21 task_manager/templates/users.html:9
 msgid "Имя пользователя"
 msgstr "Username"
 
 #: task_manager/templates/login.html:13 task_manager/templates/login.html:15
+#: task_manager/templates/u_create.html:25
+#: task_manager/templates/u_create.html:27
 msgid "Пароль"
 msgstr "Password"
+
+#: task_manager/templates/login.html:19
+msgid "Войти"
+msgstr "Login"
+
+#: task_manager/templates/u_create.html:7
+#: task_manager/templates/u_create.html:9
+msgid "Имя"
+msgstr "First name"
+
+#: task_manager/templates/u_create.html:13
+#: task_manager/templates/u_create.html:15
+msgid "Фамилия"
+msgstr "Last name"
+
+#: task_manager/templates/u_create.html:28
+msgid "Ваш пароль должен содержать как минимум 3 символа."
+msgstr "Your password must contain at least 3 symbols."
+
+#: task_manager/templates/u_create.html:32
+#: task_manager/templates/u_create.html:34
+msgid "Подтверждение пароля"
+msgstr "Password confirmation"
+
+#: task_manager/templates/u_create.html:35
+msgid "Для подтверждения введите, пожалуйста, пароль ещё раз."
+msgstr "For password confirmation, please enter it one more time"
+
+#: task_manager/templates/u_create.html:39
+msgid "Зарегистрировать"
+msgstr "Register"
 
 #: task_manager/templates/users.html:8
 msgid "ID"

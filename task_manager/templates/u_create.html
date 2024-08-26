@@ -2,5 +2,41 @@
 {% load i18n %}
 {% block content %}
 <h1>{% translate "Регистрация" %}</h1>
-
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">{% translate "Имя" %}
+            <div></div>
+            <input type="text" name="first_name" placeholder="{% translate 'Имя' %}" class="form-control">
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Фамилия" %}
+            <div></div>
+            <input type="text" name="last_name" placeholder="{% translate 'Фамилия' %}" class="form-control">
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Имя пользователя" %}
+            <div></div>
+            <input type="text" name="username" placeholder="{% translate 'Имя пользователя' %}" class="form-control">
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Пароль" %}
+            <div></div>
+            <input type="text" name="password1" placeholder="{% translate 'Пароль' %}" class="form-control">
+            <div class="form-text">{% translate "Ваш пароль должен содержать как минимум 3 символа." %}</div>
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Подтверждение пароля" %}
+            <div></div>
+            <input type="text" name="password2" placeholder="{% translate 'Подтверждение пароля' %}" class="form-control">
+            <div class="form-text">{% translate "Для подтверждения введите, пожалуйста, пароль ещё раз." %}</div>
+        </label>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="{% translate 'Зарегистрировать' %}" class="btn btn-primary">
+    </div>
+</form>
 {% endblock %}
