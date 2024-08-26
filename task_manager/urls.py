@@ -20,15 +20,19 @@ from task_manager import views
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.IndexView.as_view(), name='index'),
     path('users/', include('task_manager.users.urls')),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.LoginView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(
-    path('', views.index),
+    path('', views.IndexView.as_view(), name='index'),
     path('users/', include('task_manager.users.urls')),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.LoginView.as_view(), name='logout'),
     # Needed for translations in Javascript
     # path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 )

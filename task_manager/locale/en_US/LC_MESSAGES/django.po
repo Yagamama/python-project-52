@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-24 14:08+0500\n"
+"POT-Creation-Date: 2024-08-26 12:47+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: task_manager/templates/index.html:11
+#: task_manager/templates/index.html:10
 msgid "Привет от Хекслета!"
 msgstr "Hello from Hexlet!"
 
-#: task_manager/templates/index.html:12
+#: task_manager/templates/index.html:11
 msgid "Практические курсы по программированию"
 msgstr "Programming courses"
 
-#: task_manager/templates/index.html:14
+#: task_manager/templates/index.html:13
 msgid "Узнать больше"
 msgstr "Know more"
 
@@ -41,21 +41,26 @@ msgstr "Task manager"
 msgid "Пользователи"
 msgstr "Users"
 
-#: task_manager/templates/layout.html:27
+#: task_manager/templates/layout.html:27 task_manager/templates/login.html:4
 msgid "Вход"
 msgstr "Login"
 
-#: task_manager/templates/layout.html:30
+#: task_manager/templates/layout.html:30 task_manager/templates/u_create.html:4
 msgid "Регистрация"
 msgstr "Register"
+
+#: task_manager/templates/login.html:7 task_manager/templates/login.html:9
+#: task_manager/templates/users.html:9
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: task_manager/templates/login.html:13 task_manager/templates/login.html:15
+msgid "Пароль"
+msgstr "Password"
 
 #: task_manager/templates/users.html:8
 msgid "ID"
 msgstr "ID"
-
-#: task_manager/templates/users.html:9
-msgid "Имя пользователя"
-msgstr "Username"
 
 #: task_manager/templates/users.html:10
 msgid "Полное имя"
@@ -65,10 +70,13 @@ msgstr "Full name"
 msgid "Дата создания"
 msgstr "Created"
 
-#: task_manager/templates/users.html:23
+#: task_manager/templates/users.html:22
 msgid "Изменить"
 msgstr "Edit"
 
-#: task_manager/templates/users.html:25
+#: task_manager/templates/users.html:24
 msgid "Удалить"
 msgstr "Delete"
+
+#~ msgid "Создать пользователя"
+#~ msgstr "Create user"
