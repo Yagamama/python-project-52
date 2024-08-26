@@ -31,7 +31,7 @@ class UserUpdateView(View):
 class UserDeleteView(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'u_create.html')
+        return render(request, 'user_delete.html')
     
     def post(self, request, *args, **kwargs):
         return render(request, 'users.html')

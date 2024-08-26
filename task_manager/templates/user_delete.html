@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+<h1>{% translate "Удаление пользователя" %}</h1>
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">{% translate "Вы уверены, что хотите удалить " %}?
+        </label>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="{% translate 'Да, удалить' %}" class="btn btn-danger">
+    </div>
+</form>
+{% endblock %}
