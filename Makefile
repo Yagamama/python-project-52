@@ -9,3 +9,7 @@ mes_en:
 
 mes_compile:
 	django-admin compilemessages
+
+mig:
+	python manage.py makemigrations
+	python manage.py migrate
