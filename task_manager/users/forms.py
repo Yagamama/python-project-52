@@ -1,6 +1,6 @@
 from django import forms
 from .models import Users
-from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy
 # import django_bootstrap5
 
 class UserForm(forms.ModelForm):
@@ -8,25 +8,35 @@ class UserForm(forms.ModelForm):
     class Meta:
         
         atr = {'class': 'form-control'}
+        FIRST_NAME = gettext_lazy('Имя')
+        LAST_NAME = gettext_lazy('Фамилия')
+        USERNAME = gettext_lazy('Имя пользователя')
+        PASSWORD = gettext_lazy('Пароль')
+        PASS_CONFIRM = gettext_lazy('Подтверждение пароля')
+        USER_HELP = gettext_lazy('Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.')
+        PASS_HELP = gettext_lazy('Ваш пароль должен содержать как минимум 3 символа.')
+        PASS_CONFIRM_HELP = gettext_lazy('Для подтверждения введите, пожалуйста, пароль ещё раз.')
 
         model = Users
         fields = ['first_name', 'last_name', 'username', 'password', 'password']
         widgets = {
-            'first_name': forms.TextInput(attrs=atr),
-            'last_name': forms.TextInput(attrs=atr),
-            'username': forms.TextInput(attrs=atr),
-            'password': forms.PasswordInput(attrs=atr),
-            'password2': forms.PasswordInput(attrs=atr),
+            'first_name': forms.TextInput(attrs=atr|{'placeholder': FIRST_NAME}),
+            'last_name': forms.TextInput(attrs=atr|{'placeholder': LAST_NAME}),
+            'username': forms.TextInput(attrs=atr|{'placeholder': USERNAME}),
+            'password': forms.PasswordInput(attrs=atr|{'placeholder': PASSWORD}),
+            'password2': forms.PasswordInput(attrs=atr|{'placeholder': PASS_CONFIRM}),
         }
         labels = {
-            'first_name': gettext('Имя'),
-            'last_name': gettext('Фамилия'),
-            'username': gettext('Имя пользователя'),
-            'password': gettext('Пароль'),
-            'password2': gettext('Подтверждение пароля'),
+            'first_name': FIRST_NAME,
+            'last_name': LAST_NAME,
+            'username': USERNAME,
+            'password': PASSWORD,
+            'password2': PASS_CONFIRM,
         }
-        help_text = {
-            'username': gettext('Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.'),
-            'password': gettext('Ваш пароль должен содержать как минимум 3 символа.'),
-            'password2': gettext('Для подтверждения введите, пожалуйста, пароль ещё раз.'),
+        help_texts = {
+            'username': USER_HELP,
+            'password': PASS_HELP,
+            'password2': PASS_CONFIRM_HELP,
         }
+        error_messages = {}
+        validators = {}
