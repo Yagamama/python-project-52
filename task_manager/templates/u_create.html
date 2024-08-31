@@ -5,26 +5,43 @@
 <form method="post" action="{% url 'user_create' %}">
     {% csrf_token %}
     <div class="mb-3">
-        {{ form }}
-    </div>
-    <!-- {% for field in form %}
-    <div class="mb-3">
-        <label class="form-label">{{ field.label }}
-            <div class="form-control">{{ field.widget }}</div>
-            <input type="text" class="form-control">
-            <div class="form-text">{{ field.help_text }}</div>
+        <label class="form-label">{% translate "Имя" %}
+            <div></div>
+            <input type="text" name="first_name" placeholder="{% translate 'Имя' %}" value="{{ user.first_name }}" {% if errors %} class="form-control is-valid" {% else %} class="form-control" {% endif %}>
         </label>
     </div>
-    {% endfor %} -->
+    <div class="mb-3">
+        <label class="form-label">{% translate "Фамилия" %}
+            <div></div>
+            <input type="text" name="last_name" placeholder="{% translate 'Фамилия' %}" value="{{ user.last_name }}" {% if errors %} class="form-control is-valid" {% else %} class="form-control" {% endif %}>
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Имя пользователя" %}
+            <div></div>
+            <input type="text" name="username" placeholder="{% translate 'Имя пользователя' %}" value="{{ user.username }}" {% if errors %} class="form-control is-valid" {% else %} class="form-control" {% endif %}>
+            <div class="form-text">{% translate "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_." %}</div>
+            <div class="aria-invalid='true' invalid-feedback">{% translate "Введите правильное имя пользователя. Оно может содержать только буквы, цифры и знаки @/./+/-/_." %}</div>
+        </label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">{% translate "Пароль" %}
+            <div></div>
+            <input type="password" name="password1" placeholder="{% translate 'Пароль' %}" {% if 'too_short_pass' in errors %} class="form-control is-invalid" {% else %} class="form-control" {% endif %}>
+            <div class="form-text">{% translate "Ваш пароль должен содержать как минимум 3 символа." %}</div>
+            <div class="aria-invalid='true' invalid-feedback">{% translate "Пароль слишком короткий." %}</div>
+        </label>
+    </div>
     <div class="mb-3">
         <label class="form-label">{% translate "Подтверждение пароля" %}
             <div></div>
-            <input type="password" name="password2" required placeholder="{% translate 'Подтверждение пароля' %}" class="form-control">
+            <input type="password" name="password2" placeholder="{% translate 'Подтверждение пароля' %}" {% if 'different_passes' in errors %} class="form-control is-invalid" {% else %} class="form-control" {% endif %}>
+            <div class="aria-invalid='true' invalid-feedback">{% translate "Введенные пароли не совпадают." %}</div>
             <div class="form-text">{% translate "Для подтверждения введите, пожалуйста, пароль ещё раз." %}</div>
         </label>
     </div>
     <div class="mb-3">
-        <input type="submit" value="{% translate 'Зарегистрировать' %}" class="btn btn-primary">
+        <input type="submit" value="{{ btn }}" class="btn btn-primary">
     </div>
 </form>
 {% endblock %}

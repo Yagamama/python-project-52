@@ -13,17 +13,18 @@
         </tr>
       </thead>
       <tbody>
+          {% for u in users %}
           <tr>
-            <td>1</td>
-            <td>ivanovvvv</td>
-            <td>Иван Ивановввв</td>
-            <td>09.08.2024 11:31</td>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.first_name }} {{ u.last_name }}</td>
+            <td>{{ u.created_at }}</td>
             <td>
-              <a href="/users/1/update/">{% translate "Изменить" %}</a>
+              <a href="{% url 'user_update' pk=u.id %}">{% translate "Изменить" %}</a>
               <br>
-              <a href="/users/1/delete/">{% translate "Удалить" %}</a>
+              <a href="{% url 'user_delete' pk=u.id %}">{% translate "Удалить" %}</a>
             </td>
           </tr>
-        
+          {% endfor %}
 </table>
 {% endblock %}

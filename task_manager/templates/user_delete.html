@@ -3,8 +3,9 @@
 {% block content %}
 <h1>{% translate "Удаление пользователя" %}</h1>
 <form method="post">
+    {% csrf_token %}
     <div class="mb-3">
-        <label class="form-label">{% translate "Вы уверены, что хотите удалить " %}?
+        <label class="form-label">{% translate "Вы уверены, что хотите удалить " %}{{ user.first_name }} {{ user.last_name}}?
         </label>
     </div>
     <div class="mb-3">
