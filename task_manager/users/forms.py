@@ -1,5 +1,5 @@
 from django import forms
-from .models import Users
+from .models import User
 from django.utils.translation import gettext_lazy
 # import django_bootstrap5
 
@@ -17,7 +17,7 @@ class UserForm(forms.ModelForm):
         PASS_HELP = gettext_lazy('Ваш пароль должен содержать как минимум 3 символа.')
         PASS_CONFIRM_HELP = gettext_lazy('Для подтверждения введите, пожалуйста, пароль ещё раз.')
 
-        model = Users
+        model = User
         fields = ['first_name', 'last_name', 'username', 'password', 'password']
         widgets = {
             'first_name': forms.TextInput(attrs=atr|{'placeholder': FIRST_NAME}),

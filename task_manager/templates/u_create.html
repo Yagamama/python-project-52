@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 <h1>{% translate "Регистрация" %}</h1>
-<form method="post" action="{% url 'user_create' %}">
+<form method="post" {% if user.id is None %} action="{% url 'user_create' %}" {% else %} action="{% url 'user_update' pk=user.id %}" {% endif %}>
     {% csrf_token %}
     <div class="mb-3">
         <label class="form-label">{% translate "Имя" %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .forms import UserForm
-from .models import Users
+from .models import User
 from django.utils.translation import gettext_lazy
 import re
 
@@ -11,12 +11,12 @@ BTN_CREATE = gettext_lazy('Зарегистрировать')
 BTN_UPDATE = gettext_lazy('Сохранить')
 
 # def index(request):
-#     return render(request, 'users.html')
+#     return render(request, 'User.html')
 
-class UsersView(View):
+class UserView(View):
 
     def get(self, request, *args, **kwargs):
-        u = Users.objects.all().order_by('created_at')
+        u = User.objects.all().order_by('created_at')
         return render(request, 'users.html', {'users': u})
     
 
@@ -31,7 +31,7 @@ class UserCreateView(View):
         #     errors = user_errors(request.POST)
         #     if not errors:
         #         form.save()
-        #         return redirect('/users/')
+        #         return redirect('/User/')
         #     return render(request, 'u_create.html', {'form': form, 'errors': errors})
         errors = user_errors(request.POST)
         if errors:
@@ -44,16 +44,15 @@ class UserUpdateView(View):
 
     def get(self, request, *args, **kwargs):
         id = kwargs.get('pk')
-        user = Users.objects.get(id=id)
+        user = User.objects.get(id=id)
         return render(request, 'u_create.html', {'user': user, 'btn': BTN_UPDATE})
     
     def post(self, request, *args, **kwargs):
         id = kwargs.get('pk')
-        user = Users.objects.get(id=id)
         errors = user_errors(request.POST)
         if errors:
             return render(request, 'u_create.html', {'user': request.POST, 'errors': errors, 'btn': BTN_UPDATE})
-        save_data(user, id=request.POST.get('id'))
+        save_data(request.POST, id)
         return redirect('/users/')
     
 
@@ -61,12 +60,12 @@ class UserDeleteView(View):
 
     def get(self, request, *args, **kwargs):
         id = kwargs.get('pk')
-        user = Users.objects.get(id=id)
+        user = User.objects.get(id=id)
         return render(request, 'user_delete.html', {'user': user})
     
     def post(self, request, *args, **kwargs):
         id = kwargs.get('pk')
-        user = Users.objects.get(id=id)
+        user = User.objects.get(id=id)
         user.delete()
         return redirect('/users/')
 
@@ -78,7 +77,7 @@ def user_errors(data):
     username = data.get('username', '')
     if len(username) > 150:
         errors.append('too_long_name')
-    inv_chars = re.search('\W[^@.+-]', username)
+    inv_chars = re.search('[^\w@\.\+-]', username)
     if inv_chars:
         errors.append('invalid_chars')
     if len(pas) < 3:
@@ -90,9 +89,9 @@ def user_errors(data):
 
 def save_data(data, id=0):
     if id > 0:
-        u = Users.objects.get(id=data.get('id'))
+        u = User.objects.get(id=id)
     else:
-        u = Users()
+        u = User()
     u.first_name = data.get('first_name')
     u.last_name = data.get('last_name')
     u.username = data.get('username')

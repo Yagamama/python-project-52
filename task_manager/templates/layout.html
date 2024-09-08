@@ -22,14 +22,27 @@
           
         </ul>
         <ul class="navbar-nav">
-          
+          {% if request.session.user_id is None %}
             <li class="nav-item">
               <a class="nav-link" href="/login/">{% translate "Вход" %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/create/">{% translate "Регистрация" %}</a>
             </li>
-          
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="">{% translate "Статусы" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">{% translate "Метки" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">{% translate "Задачи" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout/">{% translate "Выход" %}</a>
+            </li>
+          {% endif %}
         </ul>
 
         {% get_current_language_bidi as LANGUAGE_BIDI %}
