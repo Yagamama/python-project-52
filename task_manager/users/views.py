@@ -31,13 +31,13 @@ class UserCreateView(View):
         #     errors = user_errors(request.POST)
         #     if not errors:
         #         form.save()
-        #         return redirect('/User/')
+        #         return redirect('/users/')
         #     return render(request, 'u_create.html', {'form': form, 'errors': errors})
         errors = user_errors(request.POST)
         if errors:
             return render(request, 'u_create.html', {'user': request.POST, 'errors': errors, 'btn': BTN_CREATE})
         save_data(request.POST)
-        return redirect('/users/')
+        return redirect('/login/')
     
 
 class UserUpdateView(View):
