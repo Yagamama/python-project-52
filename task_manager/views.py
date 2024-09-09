@@ -33,5 +33,5 @@ class LoginView(View):
 class LogoutView(View):
 
     def get(self, request, *args, **kwargs):
-        request.session['user_id'] = None
+        request.session.clear()
         return render(request, 'index.html')

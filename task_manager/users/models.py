@@ -8,6 +8,6 @@ class User(models.Model):
     password = models.CharField(max_length=150, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def can_edit(self, user):
-        return self.id == user.id
+    def can_edit(self, user_id):
+        return self.id == user_id
     

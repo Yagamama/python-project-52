@@ -45,7 +45,11 @@ class UserUpdateView(View):
     def get(self, request, *args, **kwargs):
         id = kwargs.get('pk')
         user = User.objects.get(id=id)
-        return render(request, 'u_create.html', {'user': user, 'btn': BTN_UPDATE})
+        if user.can_edit(request.session.get('user_id')):
+            return render(request, 'u_create.html', {'user': user, 'btn': BTN_UPDATE})
+        else:
+            request.session.clear()
+            return redirect('/login/')
     
     def post(self, request, *args, **kwargs):
         id = kwargs.get('pk')
@@ -61,7 +65,11 @@ class UserDeleteView(View):
     def get(self, request, *args, **kwargs):
         id = kwargs.get('pk')
         user = User.objects.get(id=id)
-        return render(request, 'user_delete.html', {'user': user})
+        if user.can_edit(request.session.get('user_id')):
+            return render(request, 'user_delete.html', {'user': user})
+        else:
+            request.session.clear()
+            return redirect('/login/')
     
     def post(self, request, *args, **kwargs):
         id = kwargs.get('pk')
