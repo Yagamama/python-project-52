@@ -10,7 +10,7 @@ class TestCRUD(TestCase):
     def setUp(self) -> None:
         return super().setUp()
     
-    def test_create(self):
+    def test_crud(self):
         c = Client()
         context = {
             'first_name': 'aaaa',
@@ -26,6 +26,22 @@ class TestCRUD(TestCase):
         response = c.get('/users/')
         print('assert read')
         self.assertContains(response, 'aaaa bbbb')
+        self.assertContains(response, 'aaaabbbbcccc')
+
+        response = c.post('/login/', {'username': 'aaaabbbbcccc', 'password': '123'})
+        id = c.session.get('user_id')
+        print('id =', id)
+
+        context['last_name'] = 'bnbnbry'
+        response = c.post(f'/users/{id}/update/', context)
+        print('assert update')
+        response = c.get('/users/')
+        self.assertContains(response, 'aaaa bnbnbry')
+
+        response = c.post(f'/users/{id}/delete/')
+        print('assert delete')
+        response = c.get('/users/')
+        self.assertNotContains(response, 'aaaa bnbnbry')
     
     # def test_read(self):
     #     c = Client()
