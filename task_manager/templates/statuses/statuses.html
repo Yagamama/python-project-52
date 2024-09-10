@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+<h1>{% translate "Статусы" %}</h1>
+<form method="get" action="{% url 'status_create' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <input type="submit" value="{% translate 'Создать статус' %}" class="btn btn-primary">
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">{% translate "ID" %}</th>
+          <th scope="col">{% translate "Имя" %}</th>
+          <th scope="col">{% translate "Дата создания" %}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for s in statuses %}
+          <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.created_at }}</td>
+            <td>
+              <a href="{% url 'status_update' pk=s.id %}">{% translate "Изменить" %}</a>
+              <br>
+              <a href="{% url 'status_delete' pk=s.id %}">{% translate "Удалить" %}</a>
+            </td>
+          </tr>
+          {% endfor %}
+</table>
+{% endblock %}

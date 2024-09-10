@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-08 19:20+0500\n"
+"POT-Creation-Date: 2024-09-10 13:52+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: task_manager/statuses/views.py:6
+msgid "Создать"
+msgstr "Create"
+
+#: task_manager/statuses/views.py:7
+#: task_manager/templates/statuses/statuses.html:27
+#: task_manager/templates/users.html:23
+msgid "Изменить"
+msgstr "Edit"
 
 #: task_manager/templates/index.html:10
 msgid "Привет от Хекслета!"
@@ -51,6 +61,7 @@ msgid "Регистрация"
 msgstr "Register"
 
 #: task_manager/templates/layout.html:34
+#: task_manager/templates/statuses/statuses.html:4
 msgid "Статусы"
 msgstr "Statuses"
 
@@ -83,10 +94,47 @@ msgstr "Password"
 msgid "Войти"
 msgstr "Login"
 
+#: task_manager/templates/statuses/s_create.html:4
+#: task_manager/templates/statuses/statuses.html:8
+msgid "Создать статус"
+msgstr "Create status"
+
+#: task_manager/templates/statuses/s_create.html:8
+#: task_manager/templates/statuses/s_create.html:10
+#: task_manager/templates/statuses/statuses.html:15
 #: task_manager/templates/u_create.html:8
 #: task_manager/templates/u_create.html:10 task_manager/users/forms.py:11
 msgid "Имя"
 msgstr "First name"
+
+#: task_manager/templates/statuses/s_delete.html:4
+msgid "Удаление статуса"
+msgstr "Delete status"
+
+#: task_manager/templates/statuses/s_delete.html:8
+#: task_manager/templates/user_delete.html:8
+msgid "Вы уверены, что хотите удалить "
+msgstr "Are you sure you want to delete "
+
+#: task_manager/templates/statuses/s_delete.html:12
+#: task_manager/templates/user_delete.html:12
+msgid "Да, удалить"
+msgstr "Yes, delete"
+
+#: task_manager/templates/statuses/statuses.html:14
+#: task_manager/templates/users.html:8
+msgid "ID"
+msgstr "ID"
+
+#: task_manager/templates/statuses/statuses.html:16
+#: task_manager/templates/users.html:11
+msgid "Дата создания"
+msgstr "Created"
+
+#: task_manager/templates/statuses/statuses.html:29
+#: task_manager/templates/users.html:25
+msgid "Удалить"
+msgstr "Delete"
 
 #: task_manager/templates/u_create.html:14
 #: task_manager/templates/u_create.html:16 task_manager/users/forms.py:12
@@ -118,7 +166,7 @@ msgstr "Password confirmation"
 
 #: task_manager/templates/u_create.html:39 task_manager/users/views.py:8
 msgid "Введенные пароли не совпадают."
-msgstr ""
+msgstr "Passwords are not identical"
 
 #: task_manager/templates/u_create.html:40
 #: task_manager/templates/u_create2.html:28 task_manager/users/forms.py:18
@@ -133,33 +181,9 @@ msgstr "Register"
 msgid "Удаление пользователя"
 msgstr "Delete user"
 
-#: task_manager/templates/user_delete.html:8
-msgid "Вы уверены, что хотите удалить "
-msgstr "Are you sure you want to delete "
-
-#: task_manager/templates/user_delete.html:12
-msgid "Да, удалить"
-msgstr "Yes, delete"
-
-#: task_manager/templates/users.html:8
-msgid "ID"
-msgstr "ID"
-
 #: task_manager/templates/users.html:10
 msgid "Полное имя"
 msgstr "Full name"
-
-#: task_manager/templates/users.html:11
-msgid "Дата создания"
-msgstr "Created"
-
-#: task_manager/templates/users.html:23
-msgid "Изменить"
-msgstr "Edit"
-
-#: task_manager/templates/users.html:25
-msgid "Удалить"
-msgstr "Delete"
 
 #: task_manager/users/views.py:11
 msgid "Сохранить"
@@ -173,11 +197,8 @@ msgstr "Users"
 
 #: task_manager/views.py:7
 msgid "Вы разлогинены"
-msgstr ""
+msgstr "You are logout"
 
 #: task_manager/views.py:8
 msgid "Пожалуйста, введите правильные имя пользователя и пароль. Оба поля могут быть чувствительны к регистру."
 msgstr "Please enter correct username and password. Both fields maybe case sensitive."
-
-#~ msgid "Создать пользователя"
-#~ msgstr "Create user"

@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/', include('task_manager.users.urls')),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('statuses/', include('task_manager.statuses.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
@@ -32,6 +33,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', views.IndexView.as_view(), name='index'),
     path('users/', include('task_manager.users.urls')),
+    path('statuses/', include('task_manager.statuses.urls')),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     # Needed for translations in Javascript

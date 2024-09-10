@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+<h1>{% translate "Создать статус" %}</h1>
+<form method="post" {% if status.id is None %} action="{% url 'status_create' %}" {% else %} action="{% url 'status_update' pk=status.id %}" {% endif %}>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">{% translate "Имя" %}
+            <div></div>
+            <input type="text" name="name" placeholder="{% translate 'Имя' %}" value="{{ status.name }}" required>
+        </label>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="{{ btn }}" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}
