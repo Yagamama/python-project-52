@@ -3,7 +3,6 @@
 {% block content %}
 <h1>{% translate "Статусы" %}</h1>
 <form method="get" action="{% url 'status_create' %}">
-    {% csrf_token %}
     <div class="mb-3">
         <input type="submit" value="{% translate 'Создать статус' %}" class="btn btn-primary">
     </div>

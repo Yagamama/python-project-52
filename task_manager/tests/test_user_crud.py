@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 
 
-class TestCRUD(TestCase):
+class TestUserCRUD(TestCase):
 
     @classmethod
     def setUpTestData(cls) -> None:
@@ -19,36 +19,27 @@ class TestCRUD(TestCase):
             'password1': '123',
             'password2': '123',
         }
+        print('assert USER create')
         response = c.post('/users/create/', context)
-        print('assert create')
         self.assertTrue(response.status_code == 302)
 
+        print('assert user read')
         response = c.get('/users/')
-        print('assert read')
         self.assertContains(response, 'aaaa bbbb')
         self.assertContains(response, 'aaaabbbbcccc')
 
         response = c.post('/login/', {'username': 'aaaabbbbcccc', 'password': '123'})
         id = c.session.get('user_id')
-        print('id =', id)
+        # print('id =', id)
 
+        print('assert user update')
         context['last_name'] = 'bnbnbry'
         response = c.post(f'/users/{id}/update/', context)
-        print('assert update')
         response = c.get('/users/')
         self.assertContains(response, 'aaaa bnbnbry')
 
+        print('assert user delete')
         response = c.post(f'/users/{id}/delete/')
-        print('assert delete')
         response = c.get('/users/')
         self.assertNotContains(response, 'aaaa bnbnbry')
     
-    # def test_read(self):
-    #     c = Client()
-    #     r = c.get('/users/')
-
-    # def test_update(self):
-    #     pass
-    
-    # def test_delete(self):
-    #     pass
