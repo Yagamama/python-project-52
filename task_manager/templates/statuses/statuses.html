@@ -1,6 +1,13 @@
 {% extends 'layout.html' %}
 {% load i18n %}
 {% block content %}
+{% if messages %}
+  {% for mes in messages %}
+  <div class="alert alert-{{ mes.tags }}" role="alert">
+      {{ mes }}
+  </div>
+  {% endfor %}
+{% endif %}
 <h1>{% translate "Статусы" %}</h1>
 <form method="get" action="{% url 'status_create' %}">
     <div class="mb-3">

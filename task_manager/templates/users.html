@@ -1,6 +1,13 @@
 {% extends 'layout.html' %}
 {% load i18n %}
 {% block content %}
+{% if messages %}
+  {% for mes in messages %}
+  <div class="{{ mes.tags }}" role="alert">
+      {{ mes }}
+  </div>
+  {% endfor %}
+{% endif %}
 <h1>{% translate "Пользователи" %}</h1>
 <table class="table">
     <thead>

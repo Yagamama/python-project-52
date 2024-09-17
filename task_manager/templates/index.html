@@ -2,6 +2,13 @@
 {% load i18n %}
 
 {% block content %}
+{% if messages %}
+  {% for mes in messages %}
+  <div class="{{ mes.tags }}" role="alert">
+      {{ mes }}
+  </div>
+  {% endfor %}
+{% endif %}
 <div class="card">
     <div class="card-body p-5 bg-light">
         <h1 class="my-4">

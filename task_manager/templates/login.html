@@ -1,6 +1,13 @@
 {% extends 'layout.html' %}
 {% load i18n %}
 {% block content %}
+    {% if context.messages %}
+    {% for mes in context.messages %}
+    <div class="alert alert-{{ alert_type }}" role="alert">
+        {{ mes }}
+    </div>
+    {% endfor %}
+    {% endif %}
     <h1>{% translate "Вход" %}</h1>
     <form method="post">
         {% csrf_token %}

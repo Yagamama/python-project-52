@@ -3,15 +3,18 @@ from django.views import View
 from .forms import UserForm
 from .models import User
 from django.utils.translation import gettext_lazy
+from django.contrib import messages
 import re
 
 ERR_DIFFERENT_PASS = gettext_lazy('Введенные пароли не совпадают.')
 ERR_SHORT_PASS = gettext_lazy('Пароль слишком короткий.')
+USER_CREATED = gettext_lazy('Пользователь успешно зарегистрирован')
+USER_LOGINED = gettext_lazy('Вы залогинены')
+USER_UPDATED = gettext_lazy('Пользователь успешно изменен')
+USER_DELETED = gettext_lazy('Пользователь успешно удален')
 BTN_CREATE = gettext_lazy('Зарегистрировать')
 BTN_UPDATE = gettext_lazy('Сохранить')
 
-# def index(request):
-#     return render(request, 'User.html')
 
 class UserView(View):
 
@@ -35,7 +38,9 @@ class UserCreateView(View):
         #     return render(request, 'u_create.html', {'form': form, 'errors': errors})
         errors = user_errors(request.POST)
         if errors:
+            messages.error(request, errors, extra_tags='alert alert-danger')
             return render(request, 'u_create.html', {'user': request.POST, 'errors': errors, 'btn': BTN_CREATE})
+        messages.success(request, USER_CREATED, extra_tags='alert alert-success')
         save_data(request.POST)
         return redirect('/login/')
     
@@ -55,8 +60,11 @@ class UserUpdateView(View):
         id = kwargs.get('pk')
         errors = user_errors(request.POST)
         if errors:
+            messages.error(request, errors, extra_tags='alert alert-danger')
             return render(request, 'u_create.html', {'user': request.POST, 'errors': errors, 'btn': BTN_UPDATE})
+        # request.POST['alert_type'] = 'success'
         save_data(request.POST, id)
+        messages.success(request, USER_UPDATED, extra_tags='alert alert-success')
         return redirect('/users/')
     
 
@@ -75,6 +83,7 @@ class UserDeleteView(View):
         id = kwargs.get('pk')
         user = User.objects.get(id=id)
         user.delete()
+        messages.success(request, USER_DELETED, extra_tags='alert alert-success')
         return redirect('/users/')
 
 
