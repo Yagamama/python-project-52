@@ -11,3 +11,6 @@ class User(models.Model):
     def can_edit(self, user_id):
         return self.id == user_id
     
+    def __str__(self) -> str:
+        return self.username
+    

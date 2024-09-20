@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+{% if messages %}
+  {% for mes in messages %}
+  <div class="alert alert-{{ mes.tags }}" role="alert">
+      {{ mes }}
+  </div>
+  {% endfor %}
+{% endif %}
+<h1>{% translate "Задачи" %}</h1>
+<form method="get" action="{% url 'task_create' %}">
+    <div class="mb-3">
+        <input type="submit" value="{% translate 'Создать задачу' %}" class="btn btn-primary">
+    </div>
+</form>
+
+<div class="card">
+    <div class="card-body p-5 bg-light">
+        <form method="get">
+            <div class="mb-3">
+                <label class="form-label" for="id_status">Статус</label>
+                <select name="status" class="form-select ml-2 mr-3" id="id_status">
+                <option value="" selected>--</option>
+                <option value="1">1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_executor">Исполнитель</label>
+                <select name="executor" class="form-select ml-2 mr-3" id="id_executor">
+                <option value="" selected>--</option>
+                <option value="1">Исполнитель 1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_label">Метка</label>
+                <select name="label" class="form-select ml-2 mr-3" id="id_label">
+                <option value="" selected>--</option>
+                <option value="1">Метка 1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input type="checkbox" name="self_tasks" class="form-check-input mr-3" id="id_self_tasks">
+                    <label class="form-check-label" for="id_self_tasks">Только свои задачи</label>
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Показать">
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">{% translate "ID" %}</th>
+          <th scope="col">{% translate "Имя" %}</th>
+          <th scope="col">{% translate "Статус" %}</th>
+          <th scope="col">{% translate "Автор" %}</th>
+          <th scope="col">{% translate "Исполнитель" %}</th>
+          <th scope="col">{% translate "Дата создания" %}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for t in tasks %}
+          <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.status }}</td>
+            <td>{{ t.author }}</td>
+            <td>{{ t.executor }}</td>
+            <td>{{ t.created_at }}</td>
+            <td>
+              <a href="{% url 'task_update' pk=t.id %}">{% translate "Изменить" %}</a>
+              <br>
+              <a href="{% url 'task_delete' pk=t.id %}">{% translate "Удалить" %}</a>
+            </td>
+          </tr>
+          {% endfor %}
+</table>
+{% endblock %}
